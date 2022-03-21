@@ -1,0 +1,88 @@
+echo
+pwd 	-> ritorna il path della cartella corrente
+cd ~ 	-> sposta nella home di user
+mv <orig_file> <dest>  -> rinomina o sposta un file
+cp -r ./dir1/file1 ./dir2/file1_copy
+rm -r ./myDir
+touch newFile.tcl
+pwd > myPath.txt  -> redirezione dell'output
+ls >> filename    -> concatenazione al file, Per aggiungere le informazioni in coda al file senza cancellare il contenuto precedente
+
+-------- TCL SINTAX -------
+$  -> variable interpolation
+[] -> command/script interpolation
+{} -> non interpretano quello che è interno No interpolation
+#  -> per creare un commento
+\  -> evade caratteri speciali
+
+puts "my string"
+puts $varname
+puts -nonewline $varsurname
+
+set var 5
+$var -> torna il valore 5, interpretato da  "  " variable interpolation
+
+expr {3+5+2} -> calcola l'espressione aritmetica/logica/complesse funzioni matematiche
+expr {$a /double(2)} -> ritorna 2.5
+set result [expr 3+5+2]  -> setta result al valore 10, command evalutaion
+
+set clocks [list "clk1 "clk2"]
+set clocks [lappend "clk3 "clk4"]
+
+set clock4 [lindex $clocks 3]   ;#list indexes start from 0
+
+set myList [list Ciao a tutti] -> myList con 3 elementi
+set myList [lappend come state] ->           5 elementi ora   
+lindex $myList 3 -> ritorna la stringa "come", in posizione 3 
+lsearch -all {a b c d e c} c    ;#returns 2 and 5
+lreplace {a b c d e} 1 1 foo    #obtain -> a foo c d e
+puts "The length is [llength $myList]"
+lset <listName> <index> <new value>
+lrepeat 3 a b  -> ritorna "a b a b a b"
+lsort <option> myList
+join <list> <joinstring>
+
+string match {Luca} u  -> ritorna 1 perché u è presente
+string match {Luca} e  -> ritorna 0 perché e non è presente
+string match <pattern> <string>
+string replace "this is a bad example" 10 12 good  -> rimpiazza bad con good
+
+set myList3 [split "Hola.Hello.Ciao" "."] -> split string_to_split split_char
+
+usare "==" per il confronto tra numeri
+"eq" per il confronto tra stringhe
+
+incr x -> incremento di 1
+incr x 10 -> incremento di 10
+
+CICLO WHILE
+while { $x < 10} {
+	loop body
+}
+
+CICLO FOR
+for{set i 0} {$i < 10} {incr i } {
+	loop body
+}
+
+CICLO FOREACH
+foreach element $myList {
+	puts "$element"
+}
+
+COSTRUTTO CONDIZIONALE
+set x 1
+if {$x > 0} {
+puts "$x is a positive number"
+} elseif {$x < 0} {
+puts "$x is a negative number"
+} else {
+	puts "$x is zero"
+}
+
+PROCEDURE
+proc mySum {op_a op_b}{
+   set result [expr {$op_a + $op_b}]
+   return $result
+}
+#proc name_of_procedure list_of_args body   per dichiarare una procedura
