@@ -1,0 +1,11 @@
+set technology "technology_STmicro"
+set search_path ""
+lappend search_path "./tech/${technology}"
+
+set libraries ""
+lappend libraries "file_db_1"
+lappend libraries "file_db_2"
+lappend libraries "file_db_3"
+lappend libraries "file_db_4"
+lappend libraries "file_db_5"
+set link_library [lindex $libraries 2]

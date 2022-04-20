@@ -1,0 +1,15 @@
+set snps [getenv "SYNOPSYS"]
+set technology "technology_st_micro"
+set search_path ""
+lappend search_path "${snps}/libraries/syn"
+lappend search_path "./tech/${technology}"
+
+set link_library ""
+lappend link_library "file_db_1"
+lappend link_library "file_db_2"
+lappend link_library "file_db_3"
+lappend link_library "file_db_4"
+lappend link_library "file_db_5"
+
+set target_library ""
+lappend target_library [lindex $link_library 2]
