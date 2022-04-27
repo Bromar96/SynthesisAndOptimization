@@ -1,0 +1,12 @@
+##open Synopsys DC-compiler
+dc_shell-xg-t
+##run synthesis script
+source ./scripts/synthesis.tcl
+
+##open Synopsys PrimeTime
+pt_shell
+##run the post-synthesis script
+source ./scripts/pt_analysis.tcl
+source ./scripts/info_cell2.tcl
+##save the result
+source ./scripts/info_cell2.tcl > ./saved/ouput_infocell.txt
