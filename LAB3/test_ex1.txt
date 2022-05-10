@@ -1,0 +1,18 @@
+set cell [get_cells U18130]
+#puts [get_attribute $cell full_name]
+set cell_pins [get_pins -of_object $cell -filter "direction == out"]
+#puts [get_attribute $cell_pins full_name]
+
+set max_cell_arrival 0
+#There exists  cells with two output pins
+#Select the largest arrival time among all the output pins
+foreach_in_collection cell_pin $cell_pins {
+	set max_fall_arrival [get_attribute $cell_pin max_fall_arrival]
+	set max_rise_arrival [get_attribute $cell_pin max_rise_arrival]
+	#Select the largest value between fall and rise transition
+	set max_pin_arrival [expr max($max_fall_arrival,$max_rise_arrival)]
+	puts $max_pin_arrival
+	if {$max_pin_arrival > $max_cell_arrival} {
+		set max_cell_arrival $max_pin_arrival
+	}
+}

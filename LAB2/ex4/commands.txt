@@ -1,0 +1,6 @@
+cd /space/s290301/SODS22/LAB02_pt2/WORK_SYNTHESIS
+dc_shell-xg-t
+source ./scripts/synthesis.tcl
+
+pt_shell
+sorce ./scripts/ex4.tcl
