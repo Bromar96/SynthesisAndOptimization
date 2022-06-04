@@ -12,14 +12,14 @@ proc ex2_proc {} {
     gets $fp line
     gets $fp line
     gets $fp line
-    puts "Net \t\tStat_Prob\tTC\tTotSimPeriod"
+    puts "Net \t\t\t Stat_Prob \t TC \t TotSimPeriod"
     while {[gets $fp line] >=0 } {
-        regexp {\s+(\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)} $line match net toggle_count toggle_i time_at_one time_at_zero time_x 
+        regexp {\s+(.+\s?.+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)} $line match net toggle_count toggle_i time_at_one time_at_zero time_x 
             #regexp {(.+)\(([0-9]*)\)} $net match key num 
             #set net "key\[$num\]"
         regsub {/test/u0/} $net "" Net
         set static_probability [expr double($time_at_one)/$total_sim]
-        puts "$Net \t $static_probability \t\t $toggle_count \t $total_sim" 
+        puts "$Net \t\t $static_probability \t $toggle_count \t\t $total_sim" 
     }
     close $fp
     return
